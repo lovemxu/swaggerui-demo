@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.zito.swaggerui.dao.OrganizationUserManagementMapper">
+	<resultMap id="BaseResultMap"
+		type="com.zito.swaggerui.pojo.OrganizationUserManagement">
+		<!-- WARNING - @mbggenerated 经销商（机构）人员管理表 -->
+		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+		<result column="USER_ACCOUNT" property="userAccount" jdbcType="VARCHAR" />
+		<result column="USER_SEX" property="userSex" jdbcType="VARCHAR" />
+		<result column="CERTIFICATE_TYPE" property="certificateType"
+			jdbcType="VARCHAR" />
+		<result column="CERTIFICATE_NO" property="certificateNo"
+			jdbcType="VARCHAR" />
+		<result column="PHONE_NO" property="phoneNo" jdbcType="VARCHAR" />
+		<result column="MAILBOX" property="mailbox" jdbcType="VARCHAR" />
+		<result column="AREA_ONE" property="areaOne" jdbcType="VARCHAR" />
+		<result column="AREA_TWO" property="areaTwo" jdbcType="VARCHAR" />
+		<result column="AREA_THREE" property="areaThree" jdbcType="VARCHAR" />
+		<result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+		<result column="PRACTI_CERTI_NAME" property="practiCertiName"
+			jdbcType="VARCHAR" />
+		<result column="PRACTI_CERTI_CODE" property="practiCertiCode"
+			jdbcType="VARCHAR" />
+		<result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+		<result column="PRACTI_CERTI_AREA" property="practiCertiArea"
+			jdbcType="VARCHAR" />
+		<result column="BUSINESS_SCOPE" property="businessScope"
+			jdbcType="VARCHAR" />
+		<result column="ISSUE_DATE" property="issueDate" jdbcType="DATE" />
+		<result column="EXPIRY_DATE_BEGIN" property="expiryDateBegin"
+			jdbcType="DATE" />
+		<result column="EXPIRY_DATE_END" property="expiryDateEnd"
+			jdbcType="DATE" />
+		<result column="USER_IMG" property="userImg" jdbcType="VARCHAR" />
+		<result column="DEPOSIT_BANK" property="depositBank" jdbcType="VARCHAR" />
+		<result column="BANK_ACCOUNT" property="bankAccount" jdbcType="VARCHAR" />
+		<result column="ORGANIZATION_PARENT_ID" property="organizationParentId"
+			jdbcType="VARCHAR" />
+		<result column="IS_DEL" property="isDel" jdbcType="VARCHAR" />
+		<result column="IS_VALID" property="isValid" jdbcType="VARCHAR" />
+		<result column="CREATE_ID" property="createId" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="UPDATE_ID" property="updateId" jdbcType="VARCHAR" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="SALER_CODE" property="salerCode" jdbcType="VARCHAR" />
+
+		<result column="PRODUCT_COUNT" property="productCount"
+			jdbcType="VARCHAR" />
+		<result column="AREA_ONE_STR" property="areaOneStr" jdbcType="VARCHAR" />
+		<result column="AREA_TWO_STR" property="areaTwoStr" jdbcType="VARCHAR" />
+		<result column="AREA_THREE_STR" property="areaThreeStr"
+			jdbcType="VARCHAR" />
+		<result column="ORGANIZATION_NAME" property="organizationName"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT
+		ID,
+		USER_NAME,
+		USER_ACCOUNT,
+		IS_VALID
+		FROM
+		ORGANIZATION_USER_MANAGEMENT
+		WHERE
+        <![CDATA[IS_DEL = #{isDel}]]>
+		<if test="password != null and password != ''">
+        <![CDATA[ AND `PASSWORD` = #{password}]]>
+		</if>
+		<if test="userAccount != null and userAccount != ''">
+        <![CDATA[ AND USER_ACCOUNT = #{userAccount}]]>
+		</if>
+	</select>
+
+</mapper>
